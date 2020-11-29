@@ -1,0 +1,53 @@
+
+;; Function add (add, funcdef_no=0, decl_uid=2249, cgraph_uid=0, symbol_order=0)
+
+add (int a, int b)
+{
+  int D.2260;
+
+  D.2260 = a + b;
+  goto <D.2261>;
+  <D.2261>:
+  return D.2260;
+}
+
+
+
+;; Function sub (sub, funcdef_no=1, decl_uid=2253, cgraph_uid=1, symbol_order=1)
+
+sub (int a, int b)
+{
+  int D.2262;
+
+  D.2262 = a - b;
+  goto <D.2263>;
+  <D.2263>:
+  return D.2262;
+}
+
+
+
+;; Function main (main, funcdef_no=2, decl_uid=2255, cgraph_uid=2, symbol_order=2)
+
+main ()
+{
+  int b;
+  int a;
+  int D.2264;
+
+  scanf ("%d %d", &a, &b);
+  b.0_1 = b;
+  a.1_2 = a;
+  _3 = add (a.1_2, b.0_1);
+  b.2_4 = b;
+  a.3_5 = a;
+  printf ("a=%d, b=%d, a+b=%d\n", a.3_5, b.2_4, _3);
+  a = {CLOBBER};
+  b = {CLOBBER};
+  D.2264 = 0;
+  goto <D.2265>;
+  <D.2265>:
+  return D.2264;
+}
+
+

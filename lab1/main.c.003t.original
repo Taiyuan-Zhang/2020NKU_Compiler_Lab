@@ -1,0 +1,34 @@
+
+;; Function add (null)
+;; enabled by -tree-original
+
+
+{
+  return a + b;
+}
+
+
+;; Function sub (null)
+;; enabled by -tree-original
+
+
+{
+  return a - b;
+}
+
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  int a;
+  int b;
+
+    int a;
+    int b;
+  scanf ((const char * restrict) "%d %d", &a, &b);
+  printf ((const char * restrict) "a=%d, b=%d, a+b=%d\n", a, b, add (a, b));
+}
+return 0;
+

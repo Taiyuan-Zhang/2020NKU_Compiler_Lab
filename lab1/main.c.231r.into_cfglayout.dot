@@ -1,0 +1,109 @@
+digraph "main.c.231r.into_cfglayout" {
+overlap=false;
+subgraph "cluster_add" {
+	style="dashed";
+	color="black";
+	label="add ()";
+	fn_0_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_0_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_0_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\ \ \ \ 5:\ NOTE_INSN_BASIC_BLOCK\ 2\l\
+|\ \ \ \ 2:\ [frame:DI-0x4]=di:SI\l\
+|\ \ \ \ 3:\ [frame:DI-0x8]=si:SI\l\
+|\ \ \ \ 4:\ NOTE_INSN_FUNCTION_BEG\l\
+|\ \ \ \ 7:\ r89:SI=[frame:DI-0x4]\l\
+|\ \ \ \ 8:\ r90:SI=[frame:DI-0x8]\l\
+|\ \ \ \ 9:\ \{r87:SI=r89:SI+r90:SI;clobber\ flags:CC;\}\l\
+\ \ \ \ \ \ REG_EQUAL\ [frame:DI-0x4]+[frame:DI-0x8]\l\
+|\ \ \ 12:\ r88:SI=r87:SI\l\
+|\ \ \ 16:\ ax:SI=r88:SI\l\
+|\ \ \ 17:\ use\ ax:SI\l\
+}"];
+
+	fn_0_basic_block_0:s -> fn_0_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_0_basic_block_2:s -> fn_0_basic_block_1:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[100%]"];
+	fn_0_basic_block_0:s -> fn_0_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_sub" {
+	style="dashed";
+	color="black";
+	label="sub ()";
+	fn_1_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_1_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_1_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\ \ \ \ 5:\ NOTE_INSN_BASIC_BLOCK\ 2\l\
+|\ \ \ \ 2:\ [frame:DI-0x4]=di:SI\l\
+|\ \ \ \ 3:\ [frame:DI-0x8]=si:SI\l\
+|\ \ \ \ 4:\ NOTE_INSN_FUNCTION_BEG\l\
+|\ \ \ \ 7:\ r89:SI=[frame:DI-0x4]\l\
+|\ \ \ \ 8:\ \{r87:SI=r89:SI-[frame:DI-0x8];clobber\ flags:CC;\}\l\
+\ \ \ \ \ \ REG_EQUAL\ [frame:DI-0x4]-[frame:DI-0x8]\l\
+|\ \ \ 11:\ r88:SI=r87:SI\l\
+|\ \ \ 15:\ ax:SI=r88:SI\l\
+|\ \ \ 16:\ use\ ax:SI\l\
+}"];
+
+	fn_1_basic_block_0:s -> fn_1_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_1_basic_block_2:s -> fn_1_basic_block_1:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[100%]"];
+	fn_1_basic_block_0:s -> fn_1_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	fn_2_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_2_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_2_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\ \ \ \ 4:\ NOTE_INSN_BASIC_BLOCK\ 2\l\
+|\ \ \ \ 2:\ NOTE_INSN_FUNCTION_BEG\l\
+|\ \ \ \ 3:\ \{[frame:DI-0x8]=unspec[0x28]\ 81;scratch=0;clobber\ flags:CC;\}\l\
+|\ \ \ \ 6:\ \{r94:DI=frame:DI-0xc;clobber\ flags:CC;\}\l\
+|\ \ \ \ 7:\ \{r95:DI=frame:DI-0x10;clobber\ flags:CC;\}\l\
+|\ \ \ \ 8:\ dx:DI=r94:DI\l\
+|\ \ \ \ 9:\ si:DI=r95:DI\l\
+|\ \ \ 10:\ di:DI=`*.LC0'\l\
+|\ \ \ 11:\ ax:QI=0\l\
+|\ \ \ 12:\ ax:SI=call\ [`*__isoc99_scanf']\ argc:0\l\
+|\ \ \ 13:\ r87:SI=[frame:DI-0xc]\l\
+|\ \ \ 14:\ r88:SI=[frame:DI-0x10]\l\
+|\ \ \ 15:\ si:SI=r87:SI\l\
+|\ \ \ 16:\ di:SI=r88:SI\l\
+|\ \ \ 17:\ ax:SI=call\ [`add']\ argc:0\l\
+|\ \ \ 18:\ r89:SI=ax:SI\l\
+|\ \ \ 19:\ r90:SI=[frame:DI-0xc]\l\
+|\ \ \ 20:\ r91:SI=[frame:DI-0x10]\l\
+|\ \ \ 21:\ cx:SI=r89:SI\l\
+|\ \ \ 22:\ dx:SI=r90:SI\l\
+|\ \ \ 23:\ si:SI=r91:SI\l\
+|\ \ \ 24:\ di:DI=`*.LC1'\l\
+|\ \ \ 25:\ ax:QI=0\l\
+|\ \ \ 26:\ ax:SI=call\ [`printf']\ argc:0\l\
+|\ \ \ 27:\ r92:SI=0\l\
+|\ \ \ 30:\ r93:SI=r92:SI\l\
+|\ \ \ 34:\ ax:SI=r93:SI\l\
+|\ \ \ 35:\ \{flags:CCZ=unspec[[frame:DI-0x8],0x28]\ 82;clobber\ scratch;\}\l\
+|\ \ \ 36:\ pc=\{(flags:CCZ==0)?L39:pc\}\l\
+}"];
+
+	fn_2_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\ \ \ 42:\ NOTE_INSN_BASIC_BLOCK\ 3\l\
+|\ \ \ 37:\ call\ [`__stack_chk_fail']\ argc:0\l\
+\ \ \ \ \ \ REG_ARGS_SIZE\ 0\l\
+\ \ \ \ \ \ REG_NORETURN\ 0\l\
+\ \ \ \ \ \ REG_EH_REGION\ 0\l\
+}"];
+
+	fn_2_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{ FREQ:0 |\ \ \ 39:\ L39:\l\
+|\ \ \ 43:\ NOTE_INSN_BASIC_BLOCK\ 4\l\
+|\ \ \ 40:\ use\ ax:SI\l\
+}"];
+
+	fn_2_basic_block_0:s -> fn_2_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_2:s -> fn_2_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true, label="[0%]"];
+	fn_2_basic_block_2:s -> fn_2_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[0%]"];
+	fn_2_basic_block_4:s -> fn_2_basic_block_1:n [style="solid,bold",color=blue,weight=100,constraint=true, label="[100%]"];
+	fn_2_basic_block_0:s -> fn_2_basic_block_1:n [style="invis",constraint=true];
+}
+}
