@@ -43,38 +43,46 @@ void TreeNode::printNodeInfo(){
 
 void TreeNode::printNodeConnection(){
     if(child != nullptr){
-        printf("children: ");
+        printf("children: [");
         printf("@%d ", child->nodeID);
         TreeNode *p = child;
         while(p->sibling != nullptr){
             printf("@%d ", p->sibling->nodeID);
             p = p->sibling;
         }
+        printf("  ]");
     }
-    if(sibling != nullptr){
-        printf("sibling: @%d", sibling->nodeID);
-    }
-};
+  };
 
 string TreeNode::nodeTypeInfo(){
+    string nodeTypeInfo =  "";
     switch(nodeType){
         case NODE_CONST:
-            break;
+            switch(varType){
+                case VAR_INTERGER:
+                    nodeTypeInfo += "const type: int    value:"
+                    break;
+                case VAR_CHAR:
+                    break;
+                case VAR_STRING:
+                    break;
+             }
+          break;
           case NODE_BOOL:
+             break;
+        case NODE_VAR:
             break;
-          case NODE_VAR:
+        case NODE_EXPR:
             break;
-          case NODE_EXPR:
+        case NODE_TYPE:
             break;
-          case NODE_TYPE:
+        case NODE_STMT:
             break;
-          case NODE_STMT:
+        case NODE_PROG:
             break;
-          case NODE_PROG:
+        case NODE_OP:
             break;
-          case NODE_OP:
-            break;
-          default:
+        default:
             break;
     }   
 };

@@ -22,21 +22,52 @@ enum NodeType{
 enum StmtType{
     STMT_IF,
     STMT_WHILE,
+    STMT_FOR,
     STMT_DECL,
     STMT_ASSIGN,
     STMT_PRINTF,
-    STMT_SCANF
+    STMT_SCANF,
+    STMT_EXPR,
+    STMT_MAIN,
+    STMT_RETURN
 };
 
 enum OpType{
     OP_EQUAL,
+    OP_NOTEQUAL,
+    OP_LESS,
+    OP_GREATER,
+    OP_LESSEQUAL,
+    OP_GREATEREQUAL,
     OP_NOT,
+    OP_AND,
+    OP_OR,
     OP_ADD,
+    OP_MINUS,
+    OP_MUL,
+    OP_DIV,
+    OP_MOD,
+    OP_ANDASSIGN,
+    OP_MINUSASSIGN,
+    OP_NULASSIGN,
+    OP_DIVASSIGN,
+    OP_MODASSIGN,
+    OP_BANDASSIGN,
+    OP_BORASSIGN,
+    OP_BEORASSIGN,
+    OP_SL,
+    OP_SR,
+    OP_BAND,
+    OP_BOR,
+    OP_BNEGATION,
+    OP_BEOR
 };
 
 enum VarType{
     VAR_INTEGER,
-    VAR_VOID
+    VAR_CHAR,
+    VAR_VOID,
+    VAR_STRING
 };
 
 struct TreeNode {
@@ -62,6 +93,7 @@ struct TreeNode {
 
     int int_val;
     bool bool_val;
+    string const_string_val;
     StmtType stmtType;
     OpType opType;
     VarType varType;
