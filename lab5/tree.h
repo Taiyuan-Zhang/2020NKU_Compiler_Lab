@@ -11,6 +11,7 @@ using std::string;
 enum NodeType{
     NODE_CONST,
     NODE_BOOL,
+    NODE_DECL,
     NODE_VAR,
     NODE_EXPR,
     NODE_TYPE,
@@ -44,12 +45,15 @@ enum OpType{
     OP_OR,
     OP_ADD,
     OP_MINUS,
+    OP_UMINUS,
     OP_MUL,
     OP_DIV,
     OP_MOD,
-    OP_ANDASSIGN,
+    OP_ADDONE,
+    OP_ASSIGN,
+    OP_ADDASSIGN,
     OP_MINUSASSIGN,
-    OP_NULASSIGN,
+    OP_MULASSIGN,
     OP_DIVASSIGN,
     OP_MODASSIGN,
     OP_BANDASSIGN,
@@ -60,7 +64,8 @@ enum OpType{
     OP_BAND,
     OP_BOR,
     OP_BNEGATION,
-    OP_BEOR
+    OP_BEOR,
+    OP_ADDRESS_OF
 };
 
 enum VarType{
@@ -89,8 +94,7 @@ struct TreeNode {
     ***/
     void printNodeInfo();
     void printNodeConnection();
-    string nodeTypeInfo();
-
+    void printNodeTypeInfo();
     int int_val;
     bool bool_val;
     string const_string_val;

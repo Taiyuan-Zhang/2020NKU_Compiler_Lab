@@ -1,0 +1,3382 @@
+Terminals unused in grammar
+
+   LBRACKET
+   RBRACKET
+   RETURN
+   AASIGN
+
+
+语法
+
+    0 $accept: program $end
+
+    1 program: statements
+
+    2 statements: statement
+    3           | statements statement
+
+    4 statement: stmt_expr
+    5          | stmt_decl
+    6          | stmt_if_else
+    7          | stmt_while
+    8          | stmt_main
+    9          | stmt_printf
+   10          | stmt_scanf
+   11          | stmt_for
+   12          | LBRACE statements RBRACE
+
+   13 stmt_expr: expr SEMICOLON
+
+   14 stmt_decl: type id_list SEMICOLON
+
+   15 id_list: id_list COMMA var_decl
+   16        | var_decl
+
+   17 var_decl: ID ASSIGN expr
+   18         | ID
+
+   19 stmt_if_else: IF LPAREN expr RPAREN statement
+   20             | IF LPAREN expr RPAREN statement ELSE statement
+
+   21 stmt_while: WHILE LPAREN expr RPAREN statement
+
+   22 stmt_for: FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN statement
+   23         | FOR LPAREN stmt_decl expr SEMICOLON expr RPAREN statement
+
+   24 stmt_printf: PRINTF LPAREN params RPAREN SEMICOLON
+
+   25 stmt_scanf: SCANF LPAREN params RPAREN SEMICOLON
+
+   26 params: expr
+   27       | params COMMA expr
+
+   28 stmt_main: type MAIN LPAREN RPAREN statement
+
+   29 expr: expr ADD expr
+   30     | expr MINUS expr
+   31     | MINUS expr
+   32     | ID ADDONE
+   33     | expr MUL expr
+   34     | expr DIV expr
+   35     | expr MOD expr
+   36     | expr EQUAL expr
+   37     | expr LESS expr
+   38     | expr GREATER expr
+   39     | expr LESSEQUAL expr
+   40     | expr GREATEREQUAL expr
+   41     | expr NOTEQUAL expr
+   42     | expr AND expr
+   43     | expr OR expr
+   44     | expr BOR expr
+   45     | expr BEOR expr
+   46     | expr BAND expr
+   47     | expr SL expr
+   48     | expr SR expr
+   49     | BNEGATION expr
+   50     | NOT expr
+   51     | ID
+   52     | INTEGER
+   53     | TRUE
+   54     | CONSTSTRING
+   55     | FALSE
+   56     | LPAREN expr RPAREN
+   57     | ID ASSIGN expr
+   58     | ID ADDASSIGN expr
+   59     | ID MINUSASSIGN expr
+   60     | ID MULASSIGN expr
+   61     | ID DIVASSIGN expr
+   62     | ID MODASSIGN expr
+   63     | ID BANDASSIGN expr
+   64     | ID BEORASSIGN expr
+   65     | ID BORASSIGN expr
+   66     | BAND ID
+
+   67 type: INT
+   68     | VOID
+   69     | CHAR
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+ID (258) 17 18 32 51 57 58 59 60 61 62 63 64 65 66
+INTEGER (259) 52
+CONSTSTRING (260) 54
+IF (261) 19 20
+ELSE (262) 20
+WHILE (263) 21
+FOR (264) 22 23
+INT (265) 67
+VOID (266) 68
+CHAR (267) 69
+LPAREN (268) 19 20 21 22 23 24 25 28 56
+RPAREN (269) 19 20 21 22 23 24 25 28 56
+LBRACE (270) 12
+RBRACE (271) 12
+SEMICOLON (272) 13 14 22 23 24 25
+LBRACKET (273)
+RBRACKET (274)
+TRUE (275) 53
+FALSE (276) 55
+ADD (277) 29
+ASSIGN (278) 17 57
+EQUAL (279) 36
+NOT (280) 50
+MINUS (281) 30 31
+MUL (282) 33
+DIV (283) 34
+MOD (284) 35
+AND (285) 42
+OR (286) 43
+NOTEQUAL (287) 41
+LESS (288) 37
+GREATER (289) 38
+LESSEQUAL (290) 39
+GREATEREQUAL (291) 40
+PRINTF (292) 24
+SCANF (293) 25
+MAIN (294) 28
+RETURN (295)
+COMMA (296) 15 27
+AASIGN (297)
+ADDASSIGN (298) 58
+MINUSASSIGN (299) 59
+MULASSIGN (300) 60
+DIVASSIGN (301) 61
+MODASSIGN (302) 62
+BANDASSIGN (303) 63
+BEORASSIGN (304) 64
+BORASSIGN (305) 65
+BOR (306) 44
+BAND (307) 46 66
+BEOR (308) 45
+BNEGATION (309) 49
+UMINUS (310)
+ADDRESS_OF (311)
+ADDONE (312) 32
+SL (313) 47
+SR (314) 48
+LOWER_THEN_ELSE (315)
+
+
+Nonterminals, with rules where they appear
+
+$accept (61)
+    左： 0
+program (62)
+    左： 1, 右： 0
+statements (63)
+    左： 2 3, 右： 1 3 12
+statement (64)
+    左： 4 5 6 7 8 9 10 11 12, 右： 2 3 19 20 21 22 23 28
+stmt_expr (65)
+    左： 13, 右： 4
+stmt_decl (66)
+    左： 14, 右： 5 23
+id_list (67)
+    左： 15 16, 右： 14 15
+var_decl (68)
+    左： 17 18, 右： 15 16
+stmt_if_else (69)
+    左： 19 20, 右： 6
+stmt_while (70)
+    左： 21, 右： 7
+stmt_for (71)
+    左： 22 23, 右： 11
+stmt_printf (72)
+    左： 24, 右： 9
+stmt_scanf (73)
+    左： 25, 右： 10
+params (74)
+    左： 26 27, 右： 24 25 27
+stmt_main (75)
+    左： 28, 右： 8
+expr (76)
+    左： 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+    48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66, 右：
+    13 17 19 20 21 22 23 26 27 29 30 31 33 34 35 36 37 38 39 40 41
+    42 43 44 45 46 47 48 49 50 56 57 58 59 60 61 62 63 64 65
+type (77)
+    左： 67 68 69, 右： 14 28
+
+
+State 0
+
+    0 $accept: . program $end
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    program       转到状态 20
+    statements    转到状态 21
+    statement     转到状态 22
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 1
+
+   32 expr: ID . ADDONE
+   51     | ID .
+   57     | ID . ASSIGN expr
+   58     | ID . ADDASSIGN expr
+   59     | ID . MINUSASSIGN expr
+   60     | ID . MULASSIGN expr
+   61     | ID . DIVASSIGN expr
+   62     | ID . MODASSIGN expr
+   63     | ID . BANDASSIGN expr
+   64     | ID . BEORASSIGN expr
+   65     | ID . BORASSIGN expr
+
+    ASSIGN       shift, and go to state 33
+    ADDASSIGN    shift, and go to state 34
+    MINUSASSIGN  shift, and go to state 35
+    MULASSIGN    shift, and go to state 36
+    DIVASSIGN    shift, and go to state 37
+    MODASSIGN    shift, and go to state 38
+    BANDASSIGN   shift, and go to state 39
+    BEORASSIGN   shift, and go to state 40
+    BORASSIGN    shift, and go to state 41
+    ADDONE       shift, and go to state 42
+
+    $default  reduce using rule 51 (expr)
+
+
+State 2
+
+   52 expr: INTEGER .
+
+    $default  reduce using rule 52 (expr)
+
+
+State 3
+
+   54 expr: CONSTSTRING .
+
+    $default  reduce using rule 54 (expr)
+
+
+State 4
+
+   19 stmt_if_else: IF . LPAREN expr RPAREN statement
+   20             | IF . LPAREN expr RPAREN statement ELSE statement
+
+    LPAREN  shift, and go to state 43
+
+
+State 5
+
+   21 stmt_while: WHILE . LPAREN expr RPAREN statement
+
+    LPAREN  shift, and go to state 44
+
+
+State 6
+
+   22 stmt_for: FOR . LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN statement
+   23         | FOR . LPAREN stmt_decl expr SEMICOLON expr RPAREN statement
+
+    LPAREN  shift, and go to state 45
+
+
+State 7
+
+   67 type: INT .
+
+    $default  reduce using rule 67 (type)
+
+
+State 8
+
+   68 type: VOID .
+
+    $default  reduce using rule 68 (type)
+
+
+State 9
+
+   69 type: CHAR .
+
+    $default  reduce using rule 69 (type)
+
+
+State 10
+
+   56 expr: LPAREN . expr RPAREN
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 46
+
+
+State 11
+
+   12 statement: LBRACE . statements RBRACE
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    statements    转到状态 47
+    statement     转到状态 22
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 12
+
+   53 expr: TRUE .
+
+    $default  reduce using rule 53 (expr)
+
+
+State 13
+
+   55 expr: FALSE .
+
+    $default  reduce using rule 55 (expr)
+
+
+State 14
+
+   50 expr: NOT . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 48
+
+
+State 15
+
+   31 expr: MINUS . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 49
+
+
+State 16
+
+   24 stmt_printf: PRINTF . LPAREN params RPAREN SEMICOLON
+
+    LPAREN  shift, and go to state 50
+
+
+State 17
+
+   25 stmt_scanf: SCANF . LPAREN params RPAREN SEMICOLON
+
+    LPAREN  shift, and go to state 51
+
+
+State 18
+
+   66 expr: BAND . ID
+
+    ID  shift, and go to state 52
+
+
+State 19
+
+   49 expr: BNEGATION . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 53
+
+
+State 20
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 54
+
+
+State 21
+
+    1 program: statements .
+    3 statements: statements . statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    $default  reduce using rule 1 (program)
+
+    statement     转到状态 55
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 22
+
+    2 statements: statement .
+
+    $default  reduce using rule 2 (statements)
+
+
+State 23
+
+    4 statement: stmt_expr .
+
+    $default  reduce using rule 4 (statement)
+
+
+State 24
+
+    5 statement: stmt_decl .
+
+    $default  reduce using rule 5 (statement)
+
+
+State 25
+
+    6 statement: stmt_if_else .
+
+    $default  reduce using rule 6 (statement)
+
+
+State 26
+
+    7 statement: stmt_while .
+
+    $default  reduce using rule 7 (statement)
+
+
+State 27
+
+   11 statement: stmt_for .
+
+    $default  reduce using rule 11 (statement)
+
+
+State 28
+
+    9 statement: stmt_printf .
+
+    $default  reduce using rule 9 (statement)
+
+
+State 29
+
+   10 statement: stmt_scanf .
+
+    $default  reduce using rule 10 (statement)
+
+
+State 30
+
+    8 statement: stmt_main .
+
+    $default  reduce using rule 8 (statement)
+
+
+State 31
+
+   13 stmt_expr: expr . SEMICOLON
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    SEMICOLON     shift, and go to state 56
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+
+State 32
+
+   14 stmt_decl: type . id_list SEMICOLON
+   28 stmt_main: type . MAIN LPAREN RPAREN statement
+
+    ID    shift, and go to state 75
+    MAIN  shift, and go to state 76
+
+    id_list   转到状态 77
+    var_decl  转到状态 78
+
+
+State 33
+
+   57 expr: ID ASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 79
+
+
+State 34
+
+   58 expr: ID ADDASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 80
+
+
+State 35
+
+   59 expr: ID MINUSASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 81
+
+
+State 36
+
+   60 expr: ID MULASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 82
+
+
+State 37
+
+   61 expr: ID DIVASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 83
+
+
+State 38
+
+   62 expr: ID MODASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 84
+
+
+State 39
+
+   63 expr: ID BANDASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 85
+
+
+State 40
+
+   64 expr: ID BEORASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 86
+
+
+State 41
+
+   65 expr: ID BORASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 87
+
+
+State 42
+
+   32 expr: ID ADDONE .
+
+    $default  reduce using rule 32 (expr)
+
+
+State 43
+
+   19 stmt_if_else: IF LPAREN . expr RPAREN statement
+   20             | IF LPAREN . expr RPAREN statement ELSE statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 88
+
+
+State 44
+
+   21 stmt_while: WHILE LPAREN . expr RPAREN statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 89
+
+
+State 45
+
+   22 stmt_for: FOR LPAREN . expr SEMICOLON expr SEMICOLON expr RPAREN statement
+   23         | FOR LPAREN . stmt_decl expr SEMICOLON expr RPAREN statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    stmt_decl  转到状态 90
+    expr       转到状态 91
+    type       转到状态 92
+
+
+State 46
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   56     | LPAREN expr . RPAREN
+
+    RPAREN        shift, and go to state 93
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+
+State 47
+
+    3 statements: statements . statement
+   12 statement: LBRACE statements . RBRACE
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    RBRACE       shift, and go to state 94
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    statement     转到状态 55
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 48
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   50     | NOT expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 50 (expr)
+
+
+State 49
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   31     | MINUS expr .
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 31 (expr)
+
+
+State 50
+
+   24 stmt_printf: PRINTF LPAREN . params RPAREN SEMICOLON
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    params  转到状态 95
+    expr    转到状态 96
+
+
+State 51
+
+   25 stmt_scanf: SCANF LPAREN . params RPAREN SEMICOLON
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    params  转到状态 97
+    expr    转到状态 96
+
+
+State 52
+
+   66 expr: BAND ID .
+
+    $default  reduce using rule 66 (expr)
+
+
+State 53
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   49     | BNEGATION expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 49 (expr)
+
+
+State 54
+
+    0 $accept: program $end .
+
+    $default  接受
+
+
+State 55
+
+    3 statements: statements statement .
+
+    $default  reduce using rule 3 (statements)
+
+
+State 56
+
+   13 stmt_expr: expr SEMICOLON .
+
+    $default  reduce using rule 13 (stmt_expr)
+
+
+State 57
+
+   29 expr: expr ADD . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 98
+
+
+State 58
+
+   36 expr: expr EQUAL . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 99
+
+
+State 59
+
+   30 expr: expr MINUS . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 100
+
+
+State 60
+
+   33 expr: expr MUL . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 101
+
+
+State 61
+
+   34 expr: expr DIV . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 102
+
+
+State 62
+
+   35 expr: expr MOD . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 103
+
+
+State 63
+
+   42 expr: expr AND . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 104
+
+
+State 64
+
+   43 expr: expr OR . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 105
+
+
+State 65
+
+   41 expr: expr NOTEQUAL . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 106
+
+
+State 66
+
+   37 expr: expr LESS . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 107
+
+
+State 67
+
+   38 expr: expr GREATER . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 108
+
+
+State 68
+
+   39 expr: expr LESSEQUAL . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 109
+
+
+State 69
+
+   40 expr: expr GREATEREQUAL . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 110
+
+
+State 70
+
+   44 expr: expr BOR . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 111
+
+
+State 71
+
+   46 expr: expr BAND . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 112
+
+
+State 72
+
+   45 expr: expr BEOR . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 113
+
+
+State 73
+
+   47 expr: expr SL . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 114
+
+
+State 74
+
+   48 expr: expr SR . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 115
+
+
+State 75
+
+   17 var_decl: ID . ASSIGN expr
+   18         | ID .
+
+    ASSIGN  shift, and go to state 116
+
+    $default  reduce using rule 18 (var_decl)
+
+
+State 76
+
+   28 stmt_main: type MAIN . LPAREN RPAREN statement
+
+    LPAREN  shift, and go to state 117
+
+
+State 77
+
+   14 stmt_decl: type id_list . SEMICOLON
+   15 id_list: id_list . COMMA var_decl
+
+    SEMICOLON  shift, and go to state 118
+    COMMA      shift, and go to state 119
+
+
+State 78
+
+   16 id_list: var_decl .
+
+    $default  reduce using rule 16 (id_list)
+
+
+State 79
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   57     | ID ASSIGN expr .
+
+    $default  reduce using rule 57 (expr)
+
+
+State 80
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   58     | ID ADDASSIGN expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 58 (expr)
+
+
+State 81
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   59     | ID MINUSASSIGN expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 59 (expr)
+
+
+State 82
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   60     | ID MULASSIGN expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 60 (expr)
+
+
+State 83
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   61     | ID DIVASSIGN expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 61 (expr)
+
+
+State 84
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   62     | ID MODASSIGN expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 62 (expr)
+
+
+State 85
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   63     | ID BANDASSIGN expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 63 (expr)
+
+
+State 86
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   64     | ID BEORASSIGN expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 64 (expr)
+
+
+State 87
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   65     | ID BORASSIGN expr .
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 65 (expr)
+
+
+State 88
+
+   19 stmt_if_else: IF LPAREN expr . RPAREN statement
+   20             | IF LPAREN expr . RPAREN statement ELSE statement
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    RPAREN        shift, and go to state 120
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+
+State 89
+
+   21 stmt_while: WHILE LPAREN expr . RPAREN statement
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    RPAREN        shift, and go to state 121
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+
+State 90
+
+   23 stmt_for: FOR LPAREN stmt_decl . expr SEMICOLON expr RPAREN statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 122
+
+
+State 91
+
+   22 stmt_for: FOR LPAREN expr . SEMICOLON expr SEMICOLON expr RPAREN statement
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    SEMICOLON     shift, and go to state 123
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+
+State 92
+
+   14 stmt_decl: type . id_list SEMICOLON
+
+    ID  shift, and go to state 75
+
+    id_list   转到状态 77
+    var_decl  转到状态 78
+
+
+State 93
+
+   56 expr: LPAREN expr RPAREN .
+
+    $default  reduce using rule 56 (expr)
+
+
+State 94
+
+   12 statement: LBRACE statements RBRACE .
+
+    $default  reduce using rule 12 (statement)
+
+
+State 95
+
+   24 stmt_printf: PRINTF LPAREN params . RPAREN SEMICOLON
+   27 params: params . COMMA expr
+
+    RPAREN  shift, and go to state 124
+    COMMA   shift, and go to state 125
+
+
+State 96
+
+   26 params: expr .
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 26 (params)
+
+
+State 97
+
+   25 stmt_scanf: SCANF LPAREN params . RPAREN SEMICOLON
+   27 params: params . COMMA expr
+
+    RPAREN  shift, and go to state 126
+    COMMA   shift, and go to state 125
+
+
+State 98
+
+   29 expr: expr . ADD expr
+   29     | expr ADD expr .
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    EQUAL     shift, and go to state 58
+    MUL       shift, and go to state 60
+    DIV       shift, and go to state 61
+    MOD       shift, and go to state 62
+    NOTEQUAL  shift, and go to state 65
+
+    $default  reduce using rule 29 (expr)
+
+
+State 99
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   36     | expr EQUAL expr .
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    $default  reduce using rule 36 (expr)
+
+
+State 100
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   30     | expr MINUS expr .
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    EQUAL     shift, and go to state 58
+    MUL       shift, and go to state 60
+    DIV       shift, and go to state 61
+    MOD       shift, and go to state 62
+    NOTEQUAL  shift, and go to state 65
+
+    $default  reduce using rule 30 (expr)
+
+
+State 101
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   33     | expr MUL expr .
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    EQUAL     shift, and go to state 58
+    NOTEQUAL  shift, and go to state 65
+
+    $default  reduce using rule 33 (expr)
+
+
+State 102
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   34     | expr DIV expr .
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    EQUAL     shift, and go to state 58
+    NOTEQUAL  shift, and go to state 65
+
+    $default  reduce using rule 34 (expr)
+
+
+State 103
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   35     | expr MOD expr .
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    EQUAL     shift, and go to state 58
+    NOTEQUAL  shift, and go to state 65
+
+    $default  reduce using rule 35 (expr)
+
+
+State 104
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   42     | expr AND expr .
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 42 (expr)
+
+
+State 105
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   43     | expr OR expr .
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 43 (expr)
+
+
+State 106
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   41     | expr NOTEQUAL expr .
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    $default  reduce using rule 41 (expr)
+
+
+State 107
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   37     | expr LESS expr .
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD       shift, and go to state 57
+    EQUAL     shift, and go to state 58
+    MINUS     shift, and go to state 59
+    MUL       shift, and go to state 60
+    DIV       shift, and go to state 61
+    MOD       shift, and go to state 62
+    NOTEQUAL  shift, and go to state 65
+    SL        shift, and go to state 73
+    SR        shift, and go to state 74
+
+    $default  reduce using rule 37 (expr)
+
+
+State 108
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   38     | expr GREATER expr .
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD       shift, and go to state 57
+    EQUAL     shift, and go to state 58
+    MINUS     shift, and go to state 59
+    MUL       shift, and go to state 60
+    DIV       shift, and go to state 61
+    MOD       shift, and go to state 62
+    NOTEQUAL  shift, and go to state 65
+    SL        shift, and go to state 73
+    SR        shift, and go to state 74
+
+    $default  reduce using rule 38 (expr)
+
+
+State 109
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   39     | expr LESSEQUAL expr .
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD       shift, and go to state 57
+    EQUAL     shift, and go to state 58
+    MINUS     shift, and go to state 59
+    MUL       shift, and go to state 60
+    DIV       shift, and go to state 61
+    MOD       shift, and go to state 62
+    NOTEQUAL  shift, and go to state 65
+    SL        shift, and go to state 73
+    SR        shift, and go to state 74
+
+    $default  reduce using rule 39 (expr)
+
+
+State 110
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   40     | expr GREATEREQUAL expr .
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD       shift, and go to state 57
+    EQUAL     shift, and go to state 58
+    MINUS     shift, and go to state 59
+    MUL       shift, and go to state 60
+    DIV       shift, and go to state 61
+    MOD       shift, and go to state 62
+    NOTEQUAL  shift, and go to state 65
+    SL        shift, and go to state 73
+    SR        shift, and go to state 74
+
+    $default  reduce using rule 40 (expr)
+
+
+State 111
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   44     | expr BOR expr .
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 44 (expr)
+
+
+State 112
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   46     | expr BAND expr .
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 46 (expr)
+
+
+State 113
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   45     | expr BEOR expr .
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 45 (expr)
+
+
+State 114
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   47     | expr SL expr .
+   48     | expr . SR expr
+
+    ADD       shift, and go to state 57
+    EQUAL     shift, and go to state 58
+    MINUS     shift, and go to state 59
+    MUL       shift, and go to state 60
+    DIV       shift, and go to state 61
+    MOD       shift, and go to state 62
+    NOTEQUAL  shift, and go to state 65
+
+    $default  reduce using rule 47 (expr)
+
+
+State 115
+
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+   48     | expr SR expr .
+
+    ADD       shift, and go to state 57
+    EQUAL     shift, and go to state 58
+    MINUS     shift, and go to state 59
+    MUL       shift, and go to state 60
+    DIV       shift, and go to state 61
+    MOD       shift, and go to state 62
+    NOTEQUAL  shift, and go to state 65
+
+    $default  reduce using rule 48 (expr)
+
+
+State 116
+
+   17 var_decl: ID ASSIGN . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 127
+
+
+State 117
+
+   28 stmt_main: type MAIN LPAREN . RPAREN statement
+
+    RPAREN  shift, and go to state 128
+
+
+State 118
+
+   14 stmt_decl: type id_list SEMICOLON .
+
+    $default  reduce using rule 14 (stmt_decl)
+
+
+State 119
+
+   15 id_list: id_list COMMA . var_decl
+
+    ID  shift, and go to state 75
+
+    var_decl  转到状态 129
+
+
+State 120
+
+   19 stmt_if_else: IF LPAREN expr RPAREN . statement
+   20             | IF LPAREN expr RPAREN . statement ELSE statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    statement     转到状态 130
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 121
+
+   21 stmt_while: WHILE LPAREN expr RPAREN . statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    statement     转到状态 131
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 122
+
+   23 stmt_for: FOR LPAREN stmt_decl expr . SEMICOLON expr RPAREN statement
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    SEMICOLON     shift, and go to state 132
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+
+State 123
+
+   22 stmt_for: FOR LPAREN expr SEMICOLON . expr SEMICOLON expr RPAREN statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 133
+
+
+State 124
+
+   24 stmt_printf: PRINTF LPAREN params RPAREN . SEMICOLON
+
+    SEMICOLON  shift, and go to state 134
+
+
+State 125
+
+   27 params: params COMMA . expr
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 135
+
+
+State 126
+
+   25 stmt_scanf: SCANF LPAREN params RPAREN . SEMICOLON
+
+    SEMICOLON  shift, and go to state 136
+
+
+State 127
+
+   17 var_decl: ID ASSIGN expr .
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 17 (var_decl)
+
+
+State 128
+
+   28 stmt_main: type MAIN LPAREN RPAREN . statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    statement     转到状态 137
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 129
+
+   15 id_list: id_list COMMA var_decl .
+
+    $default  reduce using rule 15 (id_list)
+
+
+State 130
+
+   19 stmt_if_else: IF LPAREN expr RPAREN statement .
+   20             | IF LPAREN expr RPAREN statement . ELSE statement
+
+    ELSE  shift, and go to state 138
+
+    $default  reduce using rule 19 (stmt_if_else)
+
+
+State 131
+
+   21 stmt_while: WHILE LPAREN expr RPAREN statement .
+
+    $default  reduce using rule 21 (stmt_while)
+
+
+State 132
+
+   23 stmt_for: FOR LPAREN stmt_decl expr SEMICOLON . expr RPAREN statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 139
+
+
+State 133
+
+   22 stmt_for: FOR LPAREN expr SEMICOLON expr . SEMICOLON expr RPAREN statement
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    SEMICOLON     shift, and go to state 140
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+
+State 134
+
+   24 stmt_printf: PRINTF LPAREN params RPAREN SEMICOLON .
+
+    $default  reduce using rule 24 (stmt_printf)
+
+
+State 135
+
+   27 params: params COMMA expr .
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+    $default  reduce using rule 27 (params)
+
+
+State 136
+
+   25 stmt_scanf: SCANF LPAREN params RPAREN SEMICOLON .
+
+    $default  reduce using rule 25 (stmt_scanf)
+
+
+State 137
+
+   28 stmt_main: type MAIN LPAREN RPAREN statement .
+
+    $default  reduce using rule 28 (stmt_main)
+
+
+State 138
+
+   20 stmt_if_else: IF LPAREN expr RPAREN statement ELSE . statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    statement     转到状态 141
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 139
+
+   23 stmt_for: FOR LPAREN stmt_decl expr SEMICOLON expr . RPAREN statement
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    RPAREN        shift, and go to state 142
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+
+State 140
+
+   22 stmt_for: FOR LPAREN expr SEMICOLON expr SEMICOLON . expr RPAREN statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    LPAREN       shift, and go to state 10
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    expr  转到状态 143
+
+
+State 141
+
+   20 stmt_if_else: IF LPAREN expr RPAREN statement ELSE statement .
+
+    $default  reduce using rule 20 (stmt_if_else)
+
+
+State 142
+
+   23 stmt_for: FOR LPAREN stmt_decl expr SEMICOLON expr RPAREN . statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    statement     转到状态 144
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 143
+
+   22 stmt_for: FOR LPAREN expr SEMICOLON expr SEMICOLON expr . RPAREN statement
+   29 expr: expr . ADD expr
+   30     | expr . MINUS expr
+   33     | expr . MUL expr
+   34     | expr . DIV expr
+   35     | expr . MOD expr
+   36     | expr . EQUAL expr
+   37     | expr . LESS expr
+   38     | expr . GREATER expr
+   39     | expr . LESSEQUAL expr
+   40     | expr . GREATEREQUAL expr
+   41     | expr . NOTEQUAL expr
+   42     | expr . AND expr
+   43     | expr . OR expr
+   44     | expr . BOR expr
+   45     | expr . BEOR expr
+   46     | expr . BAND expr
+   47     | expr . SL expr
+   48     | expr . SR expr
+
+    RPAREN        shift, and go to state 145
+    ADD           shift, and go to state 57
+    EQUAL         shift, and go to state 58
+    MINUS         shift, and go to state 59
+    MUL           shift, and go to state 60
+    DIV           shift, and go to state 61
+    MOD           shift, and go to state 62
+    AND           shift, and go to state 63
+    OR            shift, and go to state 64
+    NOTEQUAL      shift, and go to state 65
+    LESS          shift, and go to state 66
+    GREATER       shift, and go to state 67
+    LESSEQUAL     shift, and go to state 68
+    GREATEREQUAL  shift, and go to state 69
+    BOR           shift, and go to state 70
+    BAND          shift, and go to state 71
+    BEOR          shift, and go to state 72
+    SL            shift, and go to state 73
+    SR            shift, and go to state 74
+
+
+State 144
+
+   23 stmt_for: FOR LPAREN stmt_decl expr SEMICOLON expr RPAREN statement .
+
+    $default  reduce using rule 23 (stmt_for)
+
+
+State 145
+
+   22 stmt_for: FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN . statement
+
+    ID           shift, and go to state 1
+    INTEGER      shift, and go to state 2
+    CONSTSTRING  shift, and go to state 3
+    IF           shift, and go to state 4
+    WHILE        shift, and go to state 5
+    FOR          shift, and go to state 6
+    INT          shift, and go to state 7
+    VOID         shift, and go to state 8
+    CHAR         shift, and go to state 9
+    LPAREN       shift, and go to state 10
+    LBRACE       shift, and go to state 11
+    TRUE         shift, and go to state 12
+    FALSE        shift, and go to state 13
+    NOT          shift, and go to state 14
+    MINUS        shift, and go to state 15
+    PRINTF       shift, and go to state 16
+    SCANF        shift, and go to state 17
+    BAND         shift, and go to state 18
+    BNEGATION    shift, and go to state 19
+
+    statement     转到状态 146
+    stmt_expr     转到状态 23
+    stmt_decl     转到状态 24
+    stmt_if_else  转到状态 25
+    stmt_while    转到状态 26
+    stmt_for      转到状态 27
+    stmt_printf   转到状态 28
+    stmt_scanf    转到状态 29
+    stmt_main     转到状态 30
+    expr          转到状态 31
+    type          转到状态 32
+
+
+State 146
+
+   22 stmt_for: FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN statement .
+
+    $default  reduce using rule 22 (stmt_for)

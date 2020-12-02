@@ -2,6 +2,9 @@
 %{
     #include"common.h"
     #include"main.tab.hh"
+    void domain_begin();
+    void domain_end();
+    map<string, pair<vector<TreeNode *>, vector<int>>> SymbolTable;
 %}
 
 INTEGER [0-9]+
@@ -41,12 +44,13 @@ COMMENTLINE \/\/[^\n]*
 "printf" return PRINTF;
 "scanf" return SCANF;
 
+"++" return ADDONE;
 "=" return ASSIGN;
-"+=" return ANDASSIGN;
+"+=" return ADDASSIGN;
 "-=" return MINUSASSIGN;
 "*=" return MULASSIGN;
 "/=" return DIVASSIGN;
-"%=" return MODVASSIGN;
+"%=" return MODASSIGN;
 "&=" return BANDASSIGN;
 "|=" return BORASSIGN;
 "^=" return BEORASSIGN;
@@ -72,13 +76,14 @@ COMMENTLINE \/\/[^\n]*
 "<=" return LESSEQUAL;
 ">=" return GREATEREQUAL;
 
+"," return COMMA;
 ";" return SEMICOLON;
 "(" return LPAREN;
 ")" return RPAREN;
 "[" return LBRACKET;
 "]" return RBRACKET;
-"{" {return LBRACE;
-"}" return RBRACE;
+"{" {domain_begin();return LBRACE;}
+"}" {domain_end();return RBRACE;}
 
 {INTEGER} {
     TreeNode *node = new TreeNode(NODE_CONST);
@@ -103,5 +108,20 @@ COMMENTLINE \/\/[^\n]*
 {WHITE}
 {COMMENT}
 {COMMENTLINE}
+
 %%
 
+
+void domain_begin(){
+    for(auto &i:SymbolTable)
+        i.second.second.push_back(0);
+}
+
+void domain_end(){
+    for(auto &i:SymbolTable)
+    {
+        for(int j = 0; j < i.second.second.back(); j++)
+            i.second.first.pop_back();
+        i.second.second.pop_back();
+    }
+}
